@@ -60,7 +60,21 @@ export default function Gallery({
         <PageHeader className="relative p-10">
           <PageHeaderHeading>{categoryData.title}</PageHeaderHeading>
           <PageHeaderDescription>
-            {categoryData.description}
+            {categoryData.description
+              .split(/\n\n/)
+              .map((para: string, i: number) => {
+                return i ===
+                  categoryData.description.split(/\n\n/).length - 1 ? (
+                  <>
+                    <p key={i}>{para}</p>
+                  </>
+                ) : (
+                  <>
+                    <p key={i}>{para}</p>
+                    <br></br>
+                  </>
+                )
+              })}
           </PageHeaderDescription>
         </PageHeader>
       </motion.div>
