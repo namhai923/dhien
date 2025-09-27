@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useRef } from "react"
+import Image from "next/image"
 import { SanityDocument } from "next-sanity"
 
 import { motion, useInView } from "framer-motion"
@@ -14,6 +15,8 @@ import {
   PageHeaderDescription,
 } from "./page-text"
 import { Separator } from "./ui/separator"
+import { urlFor } from "@/sanity/lib/utils"
+import { imagePlaceholder } from "@/lib/utils"
 
 export default function About({ aboutData }: { aboutData: SanityDocument }) {
   const ref = useRef(null)
@@ -26,6 +29,34 @@ export default function About({ aboutData }: { aboutData: SanityDocument }) {
           heroSection={{ cover: aboutData.cover, title: aboutData.title }}
         />
         <AboutSection aboutSection={aboutData.aboutItems} />
+        <ul className="grid md:grid-cols-4 gap-3 lg:gap-8 xl:mx-7 md:px-5 py-12">
+          {aboutData.aboutSubItems?.map((aboutSubItem: any, idx: number) => (
+            <li key={idx}>
+              <div className="flex flex-col gap-y-3">
+                <div className="relative w-full aspect-square">
+                  <Image
+                    priority
+                    src={
+                      aboutSubItem.cover
+                        ? urlFor(aboutSubItem.cover).url()
+                        : imagePlaceholder
+                    }
+                    alt={aboutSubItem.title}
+                    fill
+                    sizes="(min-width: 1000px) 30vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <h2 className="text-5xl font-bold capitalize">
+                  {`0${idx + 1}`}
+                </h2>
+                <PageHeaderDescription className="text-lg text-secondary tracking-tighter uppercase">
+                  {aboutSubItem.title}
+                </PageHeaderDescription>
+              </div>
+            </li>
+          ))}
+        </ul>
         <motion.div
           ref={ref}
           variants={{

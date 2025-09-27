@@ -30,6 +30,17 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "aboutSubItems",
+      title: "About SubItems",
+      type: "array",
+      of: [
+        defineField({
+          name: "aboutSubItem",
+          type: "aboutSubItem",
+        }),
+      ],
+    }),
+    defineField({
       name: "contactMessage",
       title: "Contact Message",
       type: "object",

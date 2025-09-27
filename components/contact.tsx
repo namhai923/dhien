@@ -51,7 +51,7 @@ export default function Contact({
               {contactData.subtitle}
             </PageHeaderDescription>
           </div>
-          <ul className="grid md:grid-cols-4 gap-3 lg:gap-8">
+          {/* <ul className="grid md:grid-cols-4 gap-3 lg:gap-8">
             {contactData.contactItems?.map((contactItem: any, idx: number) => (
               <li key={idx}>
                 <div className="flex flex-col gap-y-3">
@@ -78,7 +78,7 @@ export default function Contact({
                 </div>
               </li>
             ))}
-          </ul>
+          </ul> */}
           <div className="flex flex-col gap-y-3 text-center place-items-center">
             <PageHeaderHeading className="font-bold">
               {contactData.formMessage.title}

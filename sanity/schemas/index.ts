@@ -3,6 +3,7 @@ import { categoryItem } from "./category-item"
 
 import about from "./about"
 import { aboutItem } from "./about-item"
+import { aboutSubItem } from "./about-sub-item"
 
 import contact from "./contact"
 import { contactItem } from "./contact-item"
@@ -14,6 +15,7 @@ export const schemaTypes = [
   categoryItem,
   about,
   aboutItem,
+  aboutSubItem,
   contact,
   contactItem,
   navigation,

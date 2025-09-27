@@ -21,6 +21,7 @@ export const ABOUT_QUERY = groq`*[_type == "about"][0] {
   title,
   cover,
   aboutItems[]{title, subtitle, description},
+  aboutSubItems[]{cover, title},
   contactMessage,
   footerMessage
 }`
